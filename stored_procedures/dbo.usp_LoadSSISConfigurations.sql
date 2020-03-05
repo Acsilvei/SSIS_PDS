@@ -71,8 +71,34 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
           );
 
 
+		   -- 1.2) conn_dfnb
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'CommonConfigurations'
+         , 'Data Source=localhost;Initial Catalog=DFNB3;Provider=SQLNCLI11;Integrated Security=SSPI;'
+         , '\Package.Variables[User::conn_DFNB3].Properties[Value]'
+         , 'String'
+          );
 
 
+		   -- 1.3) conn_ssis_pds
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'CommonConfigurations'
+         , 'Data Source=localhost;Initial Catalog=SSIS_PDS;Provider=SQLNCLI11;Integrated Security=SSPI;'
+         , '\Package.Variables[User::conn_SSIS_PDS].Properties[Value]'
+         , 'String'
+          );
 
 
 
@@ -82,7 +108,7 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
     -- 2.1) jc
 	
     DELETE FROM dbo.[SSIS Configurations]
-     WHERE ConfigurationFilter = 'jc';
+     WHERE ConfigurationFilter = 'LDSBC_it243_ac';
 	
 
 	-- 2.1.1) v_data_share_root
@@ -93,8 +119,8 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
                                         , ConfiguredValueType)
     VALUES
           (
-           'jc'
-		 , 'C:\Users\z035330\Documents\JJAUSSI\Other\JC\projects\LDSBC\IT_243\repos\DFNB_dw\txt_files\'
+           'LDSBC_it243_ac'
+		 , 'C:\repos\DFNB_src\txt_files'
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );

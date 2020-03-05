@@ -12,11 +12,35 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{33EBB717-2C51-43AF-9FC1-1D9C0C76DB0C}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{123E60FB-84B1-4EDD-B982-C4A37C498803}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DFNB3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{55E81BB4-EEC2-4124-B52B-709CC8E85388}"
+      DTS:ObjectName="localhost.DFNB3">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::conn_DFNB]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DFNB;Provider=SQLNCLI11;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.EXM]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8617F6E7-CFED-4956-80D2-0FF816734AC0}"
+      DTS:ObjectName="localhost.EXM">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::conn_EXM]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=EXM;Provider=SQLNCLI11;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SSIS_PDS]"
       DTS:CreationName="OLEDB"
@@ -72,6 +96,33 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{03673BA4-2357-4232-BEDB-EA0721B5015D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="conn_DFNB">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=localhost;Initial Catalog=DFNB;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E7D91BA4-1360-43DD-B63A-DA5AF0D67F96}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="conn_EXM">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=localhost;Initial Catalog=EXM;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B66DD038-BF3A-44F4-B46C-C66E0B25D626}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="conn_SSIS_PDS">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=localhost;Initial Catalog=SSIS_PDS;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{16666190-DD24-4259-82C2-58C03293AD42}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
@@ -112,118 +163,13 @@
       <DTS:Executables />
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Parent Container"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{5BE96D65-DDDF-44B9-B1F8-A2E62E4747C2}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Parent Container">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Parent Container\TestConnection Managers"
-          DTS:CreationName="STOCK:SEQUENCE"
-          DTS:Description="Sequence Container"
-          DTS:DTSID="{66853AEE-9420-4ACD-9280-988916C0A413}"
-          DTS:ExecutableType="STOCK:SEQUENCE"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="TestConnection Managers">
-          <DTS:Variables />
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\Parent Container\TestConnection Managers\DFNB3"
-              DTS:CreationName="Microsoft.Pipeline"
-              DTS:Description="Tarefa Fluxo de Dados"
-              DTS:DTSID="{9A29EC4F-92CC-4514-AF7B-FD1D8BD49680}"
-              DTS:ExecutableType="Microsoft.Pipeline"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="DFNB3"
-              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <pipeline
-                  version="1" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Parent Container\TestConnection Managers\EXM"
-              DTS:CreationName="Microsoft.Pipeline"
-              DTS:Description="Tarefa Fluxo de Dados"
-              DTS:DTSID="{67198D99-54B6-4EB3-AE5A-ECD9BE78757E}"
-              DTS:ExecutableType="Microsoft.Pipeline"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="EXM"
-              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <pipeline
-                  version="1" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Parent Container\TestConnection Managers\SSIS_PDS"
-              DTS:CreationName="Microsoft.Pipeline"
-              DTS:Description="Tarefa Fluxo de Dados"
-              DTS:DTSID="{B8520074-FD76-46FF-B4A5-9D7C9C152E6B}"
-              DTS:ExecutableType="Microsoft.Pipeline"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="SSIS_PDS"
-              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <pipeline
-                  version="1" />
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-        </DTS:Executable>
-      </DTS:Executables>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\SQL LogPackageEnd"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Tarefa Executar SQL"
-      DTS:DTSID="{1f246c6a-1719-4715-9d32-63dc443c8742}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="SQL LogPackageEnd"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{FE7AA0D8-A978-4B49-99D3-04BDC94429D2}"
-          SQLTask:SqlStatementSource="exec dbo.LogPackageEnd @PackageLogID = ? ,@BatchLogID = ? ,@EndBatchAudit = ?  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::PackageLogID"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="3"
-            SQLTask:ParameterSize="-1" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="1"
-            SQLTask:DtsVariableName="User::BatchLogID"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="3"
-            SQLTask:ParameterSize="-1" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="2"
-            SQLTask:DtsVariableName="User::EndBatchAudit"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="17"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Tarefa Executar SQL"
+      DTS:refId="Package\MsgBox check variable"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarefa Executar SQL"
       DTS:DTSID="{8A3768C6-91E1-4F3F-8F56-886A7C844474}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Tarefa Executar SQL"
+      DTS:ObjectName="MsgBox check variable"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -329,76 +275,183 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Test Force error"
-      DTS:CreationName="Microsoft.ScriptTask"
-      DTS:Description="Tarefa Script"
-      DTS:Disabled="True"
-      DTS:DTSID="{72C5D29D-8570-4B9B-A2F2-CF0B30C174D4}"
-      DTS:ExecutableType="Microsoft.ScriptTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Test Force error"
-      DTS:ThreadHint="2">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ScriptProject
-          Name="ST_4a5e3887c23c4716b8ef674106b090c7"
-          VSTAMajorVersion="15"
-          VSTAMinorVersion="0"
-          Language="CSharp" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Test Log variable Value Changed"
+      DTS:refId="Package\Parent Container"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
-      DTS:DTSID="{C179D80F-BEBD-44EE-B044-D6BB99517E74}"
+      DTS:DTSID="{5BE96D65-DDDF-44B9-B1F8-A2E62E4747C2}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Test Log variable Value Changed">
+      DTS:ObjectName="Parent Container">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Test Log variable Value Changed\Initial Date Time"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Tarefa Executar SQL"
-          DTS:DTSID="{6AEF4F54-0A9E-4424-A90E-C23A46CD04F3}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:refId="Package\Parent Container\Test Force error"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Tarefa Script"
+          DTS:Disabled="True"
+          DTS:DTSID="{72C5D29D-8570-4B9B-A2F2-CF0B30C174D4}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Initial Date Time"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ObjectName="Test Force error"
           DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
-            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+            <ScriptProject
+              Name="ST_4a5e3887c23c4716b8ef674106b090c7"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="CSharp" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Test Log variable Value Changed\Updated Date Time"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Tarefa Executar SQL"
-          DTS:DTSID="{7aabc0b1-1b2b-4c8b-987d-5d9c15cb1791}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:refId="Package\Parent Container\Test Log variable Value Changed"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:Disabled="True"
+          DTS:DTSID="{C179D80F-BEBD-44EE-B044-D6BB99517E74}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Updated Date Time"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ObjectName="Test Log variable Value Changed">
           <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\Test Log variable Value Changed\Initial Date Time"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Tarefa Executar SQL"
+              DTS:Disabled="True"
+              DTS:DTSID="{6AEF4F54-0A9E-4424-A90E-C23A46CD04F3}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Initial Date Time"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\Test Log variable Value Changed\Updated Date Time"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Tarefa Executar SQL"
+              DTS:Disabled="True"
+              DTS:DTSID="{7aabc0b1-1b2b-4c8b-987d-5d9c15cb1791}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Updated Date Time"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Parent Container\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{EA38BB4B-EC2F-4809-9939-7D626B712DE3}"
+              DTS:From="Package\Parent Container\Test Log variable Value Changed\Initial Date Time"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Parent Container\Test Log variable Value Changed\Updated Date Time" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Parent Container\TestConnection Managers"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{66853AEE-9420-4ACD-9280-988916C0A413}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="TestConnection Managers">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\TestConnection Managers\DFNB3"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Tarefa Fluxo de Dados"
+              DTS:DTSID="{9A29EC4F-92CC-4514-AF7B-FD1D8BD49680}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="DFNB3"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\TestConnection Managers\EXM"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Tarefa Fluxo de Dados"
+              DTS:DTSID="{67198D99-54B6-4EB3-AE5A-ECD9BE78757E}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXM"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\TestConnection Managers\SSIS_PDS"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Tarefa Fluxo de Dados"
+              DTS:DTSID="{B8520074-FD76-46FF-B4A5-9D7C9C152E6B}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SSIS_PDS"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
         </DTS:Executable>
       </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{EA38BB4B-EC2F-4809-9939-7D626B712DE3}"
-          DTS:From="Package\Test Log variable Value Changed\Initial Date Time"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\Test Log variable Value Changed\Updated Date Time" />
-      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL LogPackageEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarefa Executar SQL"
+      DTS:DTSID="{1f246c6a-1719-4715-9d32-63dc443c8742}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL LogPackageEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FE7AA0D8-A978-4B49-99D3-04BDC94429D2}"
+          SQLTask:SqlStatementSource="exec dbo.LogPackageEnd @PackageLogID = ? ,@BatchLogID = ? ,@EndBatchAudit = ?  " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::PackageLogID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::BatchLogID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::EndBatchAudit"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="17"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -414,7 +467,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
       DTS:DTSID="{EA980551-4DB4-4917-8E0C-85BC4EF290BA}"
-      DTS:From="Package\Tarefa Executar SQL"
+      DTS:From="Package\MsgBox check variable"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Parent Container" />
@@ -1386,59 +1439,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="205,55"
-          Size="205,98"
+          Size="205,43"
           Id="Package\Documentation"
-          TopLeft="122.222222222222,342.222222222222" />
+          TopLeft="38.222222222222,439.222222222222" />
         <NodeLayout
-          Size="115,42"
-          Id="Package\Parent Container\TestConnection Managers\DFNB3"
-          TopLeft="363.5,5.5" />
-        <NodeLayout
-          Size="103,42"
-          Id="Package\Parent Container\TestConnection Managers\EXM"
-          TopLeft="5.5,5.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Parent Container\TestConnection Managers\SSIS_PDS"
-          TopLeft="169.5,5.5" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="484,103"
-          Size="484,146"
-          Id="Package\Parent Container\TestConnection Managers"
-          TopLeft="4.38888888888891,47.7222222222223" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="495,249"
-          Size="495,292"
-          Id="Package\Parent Container"
-          TopLeft="248,5.49999999999989" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\SQL LogPackageEnd"
-          TopLeft="405.555555555556,341.111111111111" />
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Tarefa Executar SQL"
-          TopLeft="5.50000000000006,109.5" />
+          Size="192,42"
+          Id="Package\MsgBox check variable"
+          TopLeft="5.50000000000006,188.5" />
         <NodeLayout
           Size="158,42"
-          Id="Package\Test Force error"
-          TopLeft="778.888888888889,126.666666666667" />
+          Id="Package\Parent Container\Test Force error"
+          TopLeft="503.888888888889,106.666666666667" />
         <NodeLayout
           Size="158,42"
-          Id="Package\Test Log variable Value Changed\Initial Date Time"
+          Id="Package\Parent Container\Test Log variable Value Changed\Initial Date Time"
           TopLeft="38.0000000000002,44.3333333333333" />
         <NodeLayout
           Size="174,42"
-          Id="Package\Test Log variable Value Changed\Updated Date Time"
+          Id="Package\Parent Container\Test Log variable Value Changed\Updated Date Time"
           TopLeft="39.1111111111113,118.777777777778" />
         <EdgeLayout
-          Id="Package\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
+          Id="Package\Parent Container\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
           TopLeft="117,86.3333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1476,22 +1499,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           IsExpanded="True"
           PanelSize="265,228"
           Size="265,271"
-          Id="Package\Test Log variable Value Changed"
-          TopLeft="992.222222222222,45.5555555555556" />
+          Id="Package\Parent Container\Test Log variable Value Changed"
+          TopLeft="687.222222222222,23.5555555555556" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Parent Container\TestConnection Managers\DFNB3"
+          TopLeft="370.5,6.5" />
+        <NodeLayout
+          Size="103,42"
+          Id="Package\Parent Container\TestConnection Managers\EXM"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Parent Container\TestConnection Managers\SSIS_PDS"
+          TopLeft="169.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="490,103"
+          Size="490,146"
+          Id="Package\Parent Container\TestConnection Managers"
+          TopLeft="4.38888888888891,47.7222222222223" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1003,364"
+          Size="1003,407"
+          Id="Package\Parent Container"
+          TopLeft="248,15.4999999999999" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SQL LogPackageEnd"
+          TopLeft="512.555555555556,476.111111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="496.777777777778,297.5">
+          TopLeft="749.5,422.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.6111111111111"
+              EndConnector="-144.444444444444,53.6111111111111"
               Start="0,0"
-              End="0,36.1111111111111">
+              End="-144.444444444444,46.1111111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.1111111111111" />
+                    End="0,22.8055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8055555555555"
+                    Point2="0,26.8055555555555"
+                    Point3="-4,26.8055555555555" />
+                  <mssgle:LineSegment
+                    End="-140.444444444444,26.8055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-140.444444444444,26.8055555555555"
+                    Point2="-144.444444444444,26.8055555555555"
+                    Point3="-144.444444444444,30.8055555555555" />
+                  <mssgle:LineSegment
+                    End="-144.444444444444,46.1111111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1502,30 +1567,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="187.5,130.5">
+          TopLeft="197.5,209.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="60.5,21"
+              EndConnector="50.4999999999999,9.49999999999989"
               Start="0,0"
-              End="53,21">
+              End="42.9999999999999,9.49999999999989">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="26.25,0" />
+                    End="21.25,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="26.25,0"
-                    Point2="30.25,0"
-                    Point3="30.25,4" />
+                    Point1="21.25,0"
+                    Point2="25.25,0"
+                    Point3="25.25,4" />
                   <mssgle:LineSegment
-                    End="30.25,17" />
+                    End="25.25,5.49999999999989" />
                   <mssgle:CubicBezierSegment
-                    Point1="30.25,17"
-                    Point2="30.25,21"
-                    Point3="34.25,21" />
+                    Point1="25.25,5.49999999999989"
+                    Point2="25.25,9.49999999999989"
+                    Point3="29.25,9.49999999999989" />
                   <mssgle:LineSegment
-                    End="53,21" />
+                    End="42.9999999999999,9.49999999999989" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1550,18 +1615,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     </LayoutInfo>
   </DtsEventHandler>
   <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="182,42"
-          Id="Package.EventHandlers[OnPreExecute]\Tarefa Executar SQL"
-          TopLeft="215,96" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <DtsEventHandler
     design-time-name="Package.EventHandlers[OnPostExecute]">
     <LayoutInfo>
       <GraphLayout
@@ -1574,18 +1627,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     </LayoutInfo>
   </DtsEventHandler>
   <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="182,42"
+          Id="Package.EventHandlers[OnPreExecute]\Tarefa Executar SQL"
+          TopLeft="215,96" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
     design-time-name="Package.EventHandlers[OnVariableValueChanged]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="182,42"
-          Id="Package.EventHandlers[OnVariableValueChanged]\SQL LogVariableValueChanged"
-          TopLeft="370,108" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="215,42"
           Id="Package.EventHandlers[OnVariableValueChanged]\SCR Convert value to string"
           TopLeft="359,31" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package.EventHandlers[OnVariableValueChanged]\SQL LogVariableValueChanged"
+          TopLeft="370,108" />
         <EdgeLayout
           Id="Package.EventHandlers[OnVariableValueChanged].PrecedenceConstraints[Constraint]"
           TopLeft="463.75,73">
@@ -1605,7 +1670,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
