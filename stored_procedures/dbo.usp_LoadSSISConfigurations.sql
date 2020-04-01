@@ -26,8 +26,9 @@ PURPOSE: Load the SSIS Configurations table
 MODIFICATION LOG:
 Ver      Date        Author           Description
 -------  ----------  ---------------  ------------------------------------------------------------------------
-1.0      11/03/2019  JJAUSSI          1. Created this process for LDS BC IT243
-1.1      11/09/2019  JJAUSSI          1. Added conn_DFNB3
+1.0      11/03/2019  ASILVEIRA         1. Created this process for LDS BC IT243
+1.1      11/09/2019  ASILVEIRA         1. Added conn_DFNB3 connection configuration
+1.2      03/28/2020  ASILVEIRA         1. Added LoadDFNB3_as Configuration
 
 
 
@@ -120,7 +121,7 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
     VALUES
           (
            'LDSBC_it243_ac'
-		 , 'C:\repos\DFNB_src\txt_files'
+		 , 'C:\repos\DFNB_src\txt_files\'
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );
@@ -149,11 +150,30 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
     VALUES
           (
            'SSIS_PDS_Template'
-		 , 'C:\Users\z035330\Documents\JJAUSSI\Other\JC\projects\LDSBC\IT_243\repos\DFNB_dw\txt_files\'
+		 , 'C:\repos\DFNB_src\txt_files\'
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );
 
+		      -- 3.2) LoadDFNB3_as
+
+    DELETE FROM dbo.[SSIS Configurations]
+     WHERE ConfigurationFilter = 'LoadDFNB3_as';
+	
+
+	-- 3.2.1) v_data_share_root
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'LoadDFNB3_as'
+		 , 'C:\repos\DFNB_src\txt_files\'
+         , '\Package.Variables[User::v_data_share_root].Properties[Value]'
+         , 'String'
+          );
 
 END;
 

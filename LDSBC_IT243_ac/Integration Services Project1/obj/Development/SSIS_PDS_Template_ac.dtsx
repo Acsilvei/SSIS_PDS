@@ -10,30 +10,30 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.71"
   DTS:LocaleID="1046"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="SSIS_PDS_Template_ac"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{123E60FB-84B1-4EDD-B982-C4A37C498803}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{37FB1BA5-821D-4CAF-A44B-322BFB76A458}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.DFNB3]"
+      DTS:refId="Package.ConnectionManagers[DFNB3]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{55E81BB4-EEC2-4124-B52B-709CC8E85388}"
-      DTS:ObjectName="localhost.DFNB3">
+      DTS:ObjectName="DFNB3">
       <DTS:PropertyExpression
-        DTS:Name="ConnectionString">@[User::conn_DFNB]</DTS:PropertyExpression>
+        DTS:Name="ConnectionString">@[User::conn_DFNB3]</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DFNB;Provider=SQLNCLI11;Integrated Security=SSPI;" />
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DFNB3;Provider=SQLNCLI11;Integrated Security=SSPI;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.EXM]"
+      DTS:refId="Package.ConnectionManagers[EXM]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{8617F6E7-CFED-4956-80D2-0FF816734AC0}"
-      DTS:ObjectName="localhost.EXM">
+      DTS:ObjectName="EXM">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">@[User::conn_EXM]</DTS:PropertyExpression>
       <DTS:ObjectData>
@@ -99,9 +99,9 @@
       DTS:DTSID="{03673BA4-2357-4232-BEDB-EA0721B5015D}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
-      DTS:ObjectName="conn_DFNB">
+      DTS:ObjectName="conn_DFNB3">
       <DTS:VariableValue
-        DTS:DataType="8">Data Source=localhost;Initial Catalog=DFNB;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
+        DTS:DataType="8">Data Source=localhost;Initial Catalog=DFNB3;Provider=SQLNCLI11;Integrated Security=SSPI;</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -147,6 +147,15 @@
       DTS:ObjectName="strVariableValue">
       <DTS:VariableValue
         DTS:DataType="8">Unable to convert to string</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DBB23D13-6F54-4744-8CBC-7CF1B72DF54A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="v_data_share_root">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\z035330\Documents\JJAUSSI\Other\JC\projects\LDSBC\IT_243\repos\DFNB_dw\txt_files\</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -293,7 +302,7 @@
           DTS:ExecutableType="Microsoft.ScriptTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Test Force error"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <ScriptProject
@@ -324,7 +333,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Initial Date Time"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
@@ -340,7 +349,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Updated Date Time"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
@@ -1443,49 +1452,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="205,55"
           Size="205,43"
           Id="Package\Documentation"
-          TopLeft="38.222222222222,439.222222222222" />
+          TopLeft="126.5,518.5" />
         <NodeLayout
           Size="192,42"
           Id="Package\MsgBox check variable"
-          TopLeft="5.50000000000006,188.5" />
+          TopLeft="389,5.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Parent Container\Test Force error"
-          TopLeft="503.888888888889,106.666666666667" />
+          TopLeft="5.5,108.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Parent Container\Test Log variable Value Changed\Initial Date Time"
-          TopLeft="38.0000000000002,44.3333333333333" />
+          TopLeft="13.5,5.5" />
         <NodeLayout
           Size="174,42"
           Id="Package\Parent Container\Test Log variable Value Changed\Updated Date Time"
-          TopLeft="39.1111111111113,118.777777777778" />
+          TopLeft="5.50000000000001,107.5" />
         <EdgeLayout
           Id="Package\Parent Container\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
-          TopLeft="117,86.3333333333333">
+          TopLeft="92.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9.11111111111109,32.4444444444445"
+              EndConnector="0,60"
               Start="0,0"
-              End="9.11111111111109,24.9444444444445">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.2222222222222" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.2222222222222"
-                    Point2="0,16.2222222222222"
-                    Point3="4,16.2222222222222" />
-                  <mssgle:LineSegment
-                    End="5.11111111111109,16.2222222222222" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.11111111111109,16.2222222222222"
-                    Point2="9.11111111111109,16.2222222222222"
-                    Point3="9.11111111111109,20.2222222222222" />
-                  <mssgle:LineSegment
-                    End="9.11111111111109,24.9444444444445" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1497,66 +1494,54 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="265,228"
-          Size="265,271"
+          PanelSize="185,205"
+          Size="185,248"
           Id="Package\Parent Container\Test Log variable Value Changed"
-          TopLeft="687.222222222222,23.5555555555556" />
+          TopLeft="224,5.49999999999989" />
         <NodeLayout
           Size="115,42"
           Id="Package\Parent Container\TestConnection Managers\DFNB3"
-          TopLeft="370.5,6.5" />
+          TopLeft="5.5,5.5" />
         <NodeLayout
           Size="103,42"
           Id="Package\Parent Container\TestConnection Managers\EXM"
-          TopLeft="5.5,5.5" />
+          TopLeft="181.5,5.5" />
         <NodeLayout
           Size="133,42"
           Id="Package\Parent Container\TestConnection Managers\SSIS_PDS"
-          TopLeft="169.5,5.5" />
+          TopLeft="345.5,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="490,103"
-          Size="490,146"
+          PanelSize="484,103"
+          Size="484,146"
           Id="Package\Parent Container\TestConnection Managers"
-          TopLeft="4.38888888888891,47.7222222222223" />
+          TopLeft="469.5,56.4999999999999" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1003,364"
-          Size="1003,407"
+          PanelSize="959,308"
+          Size="959,351"
           Id="Package\Parent Container"
-          TopLeft="248,15.4999999999999" />
+          TopLeft="5.5,107.5" />
         <NodeLayout
           Size="185,42"
           Id="Package\SQL LogPackageEnd"
-          TopLeft="512.555555555556,476.111111111111" />
+          TopLeft="392.5,519" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="749.5,422.5">
+          TopLeft="485,458.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-144.444444444444,53.6111111111111"
+              EndConnector="0,60.5"
               Start="0,0"
-              End="-144.444444444444,46.1111111111111">
+              End="0,53">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8055555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.8055555555555"
-                    Point2="0,26.8055555555555"
-                    Point3="-4,26.8055555555555" />
-                  <mssgle:LineSegment
-                    End="-140.444444444444,26.8055555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-140.444444444444,26.8055555555555"
-                    Point2="-144.444444444444,26.8055555555555"
-                    Point3="-144.444444444444,30.8055555555555" />
-                  <mssgle:LineSegment
-                    End="-144.444444444444,46.1111111111111" />
+                    End="0,53" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1567,30 +1552,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="197.5,209.5">
+          TopLeft="485,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="50.4999999999999,9.49999999999989"
+              EndConnector="0,60"
               Start="0,0"
-              End="42.9999999999999,9.49999999999989">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="21.25,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="21.25,0"
-                    Point2="25.25,0"
-                    Point3="25.25,4" />
-                  <mssgle:LineSegment
-                    End="25.25,5.49999999999989" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.25,5.49999999999989"
-                    Point2="25.25,9.49999999999989"
-                    Point3="29.25,9.49999999999989" />
-                  <mssgle:LineSegment
-                    End="42.9999999999999,9.49999999999989" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
