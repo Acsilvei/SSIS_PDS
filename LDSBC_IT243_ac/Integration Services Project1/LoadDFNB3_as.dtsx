@@ -12,8 +12,8 @@
   DTS:LocaleID="1046"
   DTS:ObjectName="LoadDFNB3_as"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{6B886FE2-9606-44F1-B298-B2260EACC170}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{44CE2AB4-712D-49E3-BE40-063B362CCA88}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -49,6 +49,16 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=EXM;Provider=SQLNCLI11;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LoadNAICSCodeHierDim_as.dtsx]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D82EA8D8-D565-416E-B56E-B188F3EE8785}"
+      DTS:ObjectName="LoadNAICSCodeHierDim_as.dtsx">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\repos\SSIS_PDS\LDSBC_IT243_ac\Integration Services Project1\LoadNAICSCodeHierDim_as.dtsx" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -4837,7 +4847,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="MsgBox check variable"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4954,17 +4964,34 @@
           DTS:refId="Package\Sequence Container\Load Nums"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Tarefa Executar SQL"
+          DTS:Disabled="True"
           DTS:DTSID="{77fa2f02-48f8-4ab8-ae70-11154ef40243}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Load Nums"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{2CFAD49D-A20C-400D-B22E-7DE9C882B703}"
               SQLTask:SqlStatementSource="EXEC [dbo].[usp_Load_Nums] 10;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\LoadNAICSCodeHierDim_as"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Tarefa Executar Pacote"
+          DTS:DTSID="{BA387DA9-CF93-4B1A-80C6-58968E04A7C8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="LoadNAICSCodeHierDim_as"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <Connection>{D82EA8D8-D565-416E-B56E-B188F3EE8785}</Connection>
+            </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -26935,7 +26962,7 @@
                   DTS:LocaleID="-1"
                   DTS:ObjectName="Truncate data"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="2">
+                  DTS:ThreadHint="3">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -26961,6 +26988,7 @@
           DTS:refId="Package\Sequence Container\Reload Nums - ADO"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
+          DTS:Disabled="True"
           DTS:DTSID="{ea4e7eee-10c9-4a11-a7de-4070abb27a15}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -27234,6 +27262,7 @@
           DTS:refId="Package\Sequence Container\Reload Nums - OLE_DB"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
+          DTS:Disabled="True"
           DTS:DTSID="{8AB01DC5-C352-42AE-9B3A-A10E7D904A94}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -27493,7 +27522,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate data"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -27535,6 +27564,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Sequence Container\Reload Nums - ADO" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4597F9EC-A847-4964-9686-FD39450D0CFC}"
+          DTS:From="Package\Sequence Container\Parent Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Sequence Container\LoadNAICSCodeHierDim_as" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -27546,7 +27583,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL LogPackageEnd"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -27582,7 +27619,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test Force error"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -27613,7 +27650,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Initial Date Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
@@ -27629,7 +27666,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Updated Date Time"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
@@ -27649,6 +27686,14 @@
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B20E00B2-C2B2-436A-85A7-44531CD73500}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL LogPackageEnd" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -28629,56 +28674,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="205,55"
           Size="205,43"
           Id="Package\Documentation"
-          TopLeft="5.50000000000023,365" />
+          TopLeft="10,724" />
         <NodeLayout
           Size="192,42"
           Id="Package\MsgBox check variable"
-          TopLeft="503,5.5" />
+          TopLeft="272.5,5.5" />
         <NodeLayout
-          Size="185,42"
-          Id="Package\SQL LogPackageEnd"
-          TopLeft="987.5,365.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Test Force error"
-          TopLeft="1233,365.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Test Log variable Value Changed\Initial Date Time"
-          TopLeft="13.5,5.5" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Test Log variable Value Changed\Updated Date Time"
-          TopLeft="5.50000000000001,107.5" />
-        <EdgeLayout
-          Id="Package\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
-          TopLeft="92.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="185,204"
-          Size="185,248"
-          Id="Package\Test Log variable Value Changed"
-          TopLeft="1451.5,262.5" />
+          Size="135,42"
+          Id="Package\Sequence Container\Load Nums"
+          TopLeft="239.5,5.99999999999989" />
         <NodeLayout
           Size="128,42"
           Id="Package\Sequence Container\Parent Container\Reload raw data - Flat File\Load data"
@@ -28711,59 +28715,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="158,204"
-          Size="158,248"
+          IsExpanded="False"
+          PanelSize="158,205"
+          Size="158,43"
           Id="Package\Sequence Container\Parent Container\Reload raw data - Flat File"
           TopLeft="5.50000000000004,5.5" />
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="169,308"
-          Size="169,352"
+          IsExpanded="False"
+          PanelSize="285,309"
+          Size="285,43"
           Id="Package\Sequence Container\Parent Container"
-          TopLeft="5.50000000000006,107.5" />
-        <NodeLayout
-          Size="135,42"
-          Id="Package\Sequence Container\Load Nums"
-          TopLeft="365.611111111111,12.1666666666666" />
-        <NodeLayout
-          Size="147,42"
-          Id="Package\Sequence Container\Reload Nums - OLE_DB\Truncate data"
-          TopLeft="15,5.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM"
-          TopLeft="5.50000000000001,107.5" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Reload Nums - OLE_DB.PrecedenceConstraints[Constraint]"
-          TopLeft="88.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="177,204"
-          Size="177,248"
-          Id="Package\Sequence Container\Reload Nums - OLE_DB"
-          TopLeft="235.5,159.5" />
+          TopLeft="435.5,5.49999999999989" />
         <NodeLayout
           Size="166,42"
           Id="Package\Sequence Container\Reload Nums - ADO\Reload from EXM"
@@ -28800,100 +28763,230 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="177,204"
           Size="177,248"
           Id="Package\Sequence Container\Reload Nums - ADO"
-          TopLeft="473.5,159.5" />
+          TopLeft="243.5,108.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Sequence Container\Reload Nums - OLE_DB\Truncate data"
+          TopLeft="15,5.5" />
         <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
-          TopLeft="411.944444444445,54.1666666666666">
+          Id="Package\Sequence Container\Reload Nums - OLE_DB.PrecedenceConstraints[Constraint]"
+          TopLeft="88.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-87.9444444444445,105.333333333333"
+              EndConnector="0,60"
               Start="0,0"
-              End="-87.9444444444445,97.8333333333333">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.8735968765251" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.8735968765251"
-                    Point2="0,42.8735968765251"
-                    Point3="-4,42.8735968765251" />
-                  <mssgle:LineSegment
-                    End="-83.9444444444445,42.8735968765251" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-83.9444444444445,42.8735968765251"
-                    Point2="-87.9444444444445,42.8735968765251"
-                    Point3="-87.9444444444445,46.8735968765251" />
-                  <mssgle:LineSegment
-                    End="-87.9444444444445,97.8333333333333" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-51.9722222222223,47.8735968765251,16,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
-          TopLeft="454.277777777778,54.1666666666666">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="107.722222222222,105.333333333333"
-              Start="0,0"
-              End="107.722222222222,97.8333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.8735968765252" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.8735968765252"
-                    Point2="0,42.8735968765252"
-                    Point3="4,42.8735968765252" />
-                  <mssgle:LineSegment
-                    End="103.722222222222,42.8735968765252" />
-                  <mssgle:CubicBezierSegment
-                    Point1="103.722222222222,42.8735968765252"
-                    Point2="107.722222222222,42.8735968765252"
-                    Point3="107.722222222222,46.8735968765252" />
-                  <mssgle:LineSegment
-                    End="107.722222222222,97.8333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="45.8611111111111,47.8735968765252,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="656,514"
-          Size="656,558"
-          Id="Package\Sequence Container"
-          TopLeft="271,107.5" />
+          PanelSize="177,204"
+          Size="177,248"
+          Id="Package\Sequence Container\Reload Nums - OLE_DB"
+          TopLeft="5.50000000000006,108.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="599,47.5">
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="285.833333333333,47.9999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="-191.833333333333,60.5000000000001"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="-191.833333333333,53.0000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,20.6251830161055" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.6251830161055"
+                    Point2="0,24.6251830161055"
+                    Point3="-4,24.6251830161055" />
+                  <mssgle:LineSegment
+                    End="-187.833333333333,24.6251830161055" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-187.833333333333,24.6251830161055"
+                    Point2="-191.833333333333,24.6251830161055"
+                    Point3="-191.833333333333,28.6251830161055" />
+                  <mssgle:LineSegment
+                    End="-191.833333333333,53.0000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.916666666667,29.6251830161055,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="330.083333333333,47.9999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.5"
+              Start="0,0"
+              End="0,53">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Sequence Container\LoadNAICSCodeHierDim_as"
+          TopLeft="481,211.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="578,48.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.5,163"
+              Start="0,0"
+              End="13.5,155.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.5"
+                    Point2="0,81.5"
+                    Point3="4,81.5" />
+                  <mssgle:LineSegment
+                    End="9.5,81.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.5,81.5"
+                    Point2="13.5,81.5"
+                    Point3="13.5,85.5" />
+                  <mssgle:LineSegment
+                    End="13.5,155.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="726,412"
+          Size="726,454"
+          Id="Package\Sequence Container"
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SQL LogPackageEnd"
+          TopLeft="276,724.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Test Force error"
+          TopLeft="521.5,724.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Test Log variable Value Changed\Initial Date Time"
+          TopLeft="13.5,5.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Test Log variable Value Changed\Updated Date Time"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Test Log variable Value Changed.PrecedenceConstraints[Constraint]"
+          TopLeft="92.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="185,204"
+          Size="185,248"
+          Id="Package\Test Log variable Value Changed"
+          TopLeft="740,621.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="368.5,561.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,163"
+              Start="0,0"
+              End="0,155.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,155.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="368.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -29548,74 +29641,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Origem OLE DB"
-          TopLeft="6.00000000000001,5.5" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Destino OLE DB"
-          TopLeft="5.50000000000001,107.5" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM.Paths[Saída de Origem OLE DB]"
-          TopLeft="85,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Origem OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Destino OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Sequence Container\Reload Nums - ADO\Reload from EXM">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="159,42"
           Id="Package\Sequence Container\Reload Nums - ADO\Reload from EXM\Destino OLE DB"
@@ -29655,7 +29684,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -29666,6 +29697,72 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Destino OLE DB"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Origem OLE DB"
+          TopLeft="6.00000000000001,5.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM.Paths[Saída de Origem OLE DB]"
+          TopLeft="85,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Destino OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Reload Nums - OLE_DB\Reload from EXM\Origem OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

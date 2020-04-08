@@ -30,7 +30,7 @@ Ver      Date        Author           Description
 1.1      11/09/2019  ASILVEIRA         1. Added conn_DFNB3 connection configuration
 1.2      03/28/2020  ASILVEIRA         1. Added LoadDFNB3_as Configuration
 1.3      04/02/2020  ASILVEIRA         1. Added LoadEXM_as Configuration
-
+1.4      04/02/2020  ASILVEIRA         1. Added LoadNAICSCodeHierDim_as Configuration
 
 
 RUNTIME: 
@@ -46,6 +46,10 @@ Load configured variable values for these levels...
 Loads configuration managers for common configuration managers used in template package
 
 Connect strings are loaded with passwords to allow for automation of SSIS ETL based packages
+
+--EXEC dbo.USP_LoadSSISConfigurations;
+
+SELECT * FROM dbo[SSIS Configurations];
          
 ******************************************************************************************************************/
 
@@ -176,13 +180,13 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
          , 'String'
           );
 
-		   -- 3.3) LoadEXM_as
+		   -- 3.4) LoadEXM_as
 
     DELETE FROM dbo.[SSIS Configurations]
      WHERE ConfigurationFilter = 'LoadEXM_as';
 	
 
-	-- 3.3.1) v_data_share_root
+	-- 3.4.1) v_data_share_root
 
     INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
                                         , ConfiguredValue
@@ -195,6 +199,29 @@ Connect strings are loaded with passwords to allow for automation of SSIS ETL ba
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );
+
+
+		   -- 3.3) LoadNAICSCodeHierDim_as
+
+    DELETE FROM dbo.[SSIS Configurations]
+     WHERE ConfigurationFilter = 'LoadNAICSCodeHierDim_as';
+	
+
+	-- 3.3.1) v_data_share_root
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'LoadNAICSCodeHierDim_as'
+		 , 'C:\repos\DFNB_dw\xls_files\'
+         , '\Package.Variables[User::v_data_share_root].Properties[Value]'
+         , 'String'
+          );
+
+
 END;
 
 GO
